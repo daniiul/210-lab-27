@@ -5,6 +5,7 @@
 using namespace std;
 
 void addVillager(map<string, tuple<int, string, string>>&);
+void increaseFrlevel(map<string, tuple<int, string, string>>&);
 
 int main() {
     // declarations
@@ -20,9 +21,13 @@ int main() {
         cout << "4. Decrease Friendship" << endl;
         cout << "5. Search for Villager" << endl;
         cout << "6. Exit" << endl;
+        cout << "Enter a choice: ";
 
         cin >> value;
         if (value == 1)
+            addVillager(villagerStats);
+        else if (value == 2)
+            increaseFrlevel(villagerStats);
 
     }
 
@@ -74,4 +79,35 @@ int main() {
     cout << "Size after clear: " << villagerColors.size() << endl;
 
     return 0;
+}
+
+void addVillager(map<string, tuple<int, string, string>>& villagerStats)
+{
+    string name;
+    int frlevel;
+    string species;
+    string catchphrase;
+
+    cout << "Villager Name: ";
+    cin >> name;
+
+    do
+    {
+        cout << "Friendship level (0-10): ";
+        cin >> frlevel;
+    } while(frlevel < 0 || frlevel > 10);
+
+    cout << "Species: ";
+    cin >> species;
+
+    cout << "Catchphrase: ";
+    getline(cin, catchphrase);
+
+    tuple<int, string, string> temp(frlevel, );
+
+}
+
+void increaseFrlevel(map<string, tuple<int, string, string>>& villagerStats)
+{
+
 }
