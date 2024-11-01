@@ -1,11 +1,31 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <tuple>
 using namespace std;
+
+void addVillager(map<string, tuple<int, string, string>>&);
 
 int main() {
     // declarations
-    map<string, vector<string>> villagerColors;
+    map<string, tuple<int, string, string>> villagerStats;
+
+    int value = 0;
+
+    while(value != 6)
+    {
+        cout << "1. Add Villager" << endl;
+        cout << "2. Delete Villager" << endl;
+        cout << "3. Increase Friendship" << endl;
+        cout << "4. Decrease Friendship" << endl;
+        cout << "5. Search for Villager" << endl;
+        cout << "6. Exit" << endl;
+
+        cin >> value;
+        if (value == 1)
+
+    }
+
 
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
