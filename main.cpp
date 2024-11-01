@@ -28,6 +28,7 @@ int main() {
         cout << "Enter a choice: ";
 
         cin >> value;
+        cout << endl;
         if (value == 1)
             addVillager(villagerStats);
         else if (value == 2)
@@ -63,6 +64,8 @@ void addVillager(map<string, tuple<int, string, string>>& villagerStats)
 
     cout << "Species: ";
     cin >> species;
+
+    cin.ignore();
 
     cout << "Catchphrase: ";
     getline(cin, catchphrase);
@@ -158,13 +161,16 @@ void searchVillager(map<string, tuple<int, string, string>>& villagerStats)
 
 void print(map<string, tuple<int, string, string>>& villagerStats)
 {
+    cout << endl;
     // access the map using a range-based for loop
     cout << "Villagers details:" << endl;
     for (auto it : villagerStats) {
         cout << it.first << " [";
-        for (int i = 0; i < 3; i ++)
-            cout << get<i>(t->second) << ", ";
-        cout << "]";
+        cout << get<0>(it.second) << ", ";
+        cout << get<1>(it.second) << ", ";
+        cout << get<2>(it.second) << "] ";
         cout << endl;
     }
+
+    cout << endl;
 }
