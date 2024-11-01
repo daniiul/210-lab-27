@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1730315176 source:c:\users\guine\onedrive\documents\codeblocks\210-lab-27\main.cpp
+	<iostream>
+	<map>
+	<vector>
+
