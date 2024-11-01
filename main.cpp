@@ -9,6 +9,7 @@ void deleteVillager(map<string, tuple<int, string, string>>&);
 void increaseFrlevel(map<string, tuple<int, string, string>>&);
 void decreaseFrlevel(map<string, tuple<int, string, string>>&);
 void searchVillager(map<string, tuple<int, string, string>>&);
+void print(map<string, tuple<int, string, string>>&);
 
 int main() {
     // declarations
@@ -38,42 +39,8 @@ int main() {
         else if (value == 5)
             searchVillager(villagerStats);
 
+        print(villagerStats);
     }
-
-
-    // insert elements into the map
-    // note how the right-hand side of the assignment are the vector elements
-    villagerColors["Audie"] = {"Orange", "Yellow", "Red"};
-    villagerColors["Raymond"] = {"Black", "Gray", "White"};
-    villagerColors.insert({"Marshal", {"Blue", "White", "Black"}});
-
-    // access the map using a range-based for loop
-    cout << "Villagers and their favorite colors (range-based for loop):" << endl;
-    for (auto pair : villagerColors) {
-        cout << pair.first << ": ";
-        for (auto color : pair.second)
-            cout << color << " ";
-        cout << endl;
-    }
-
-    // access the map using iterators
-    cout << "\nVillagers and their favorite colors (iterators):" << endl;
-    for (map<string, vector<string>>::iterator it = villagerColors.begin();
-                                               it != villagerColors.end(); ++it) {
-        cout << it->first << ": ";
-        for (auto color : it->second) {
-            cout << color << " ";
-        }
-        cout << endl;
-    }
-
-
-
-
-    // report size, clear, report size again to confirm map operations
-    cout << "\nSize before clear: " << villagerColors.size() << endl;
-    villagerColors.clear();
-    cout << "Size after clear: " << villagerColors.size() << endl;
 
     return 0;
 }
@@ -115,7 +82,7 @@ void deleteVillager(map<string, tuple<int, string, string>>& villagerStats)
     auto it = villagerStats.find(searchKey);
     if (it != villagerStats.end())
     {
-        villagerColors.erase(searchKey);
+        villagerStats.erase(searchKey);
     }
     else
         cout << endl << searchKey << " not found." << endl;
@@ -187,4 +154,17 @@ void searchVillager(map<string, tuple<int, string, string>>& villagerStats)
     }
     else
         cout << endl << searchKey << " not found." << endl;
+}
+
+void print(map<string, tuple<int, string, string>>& villagerStats)
+{
+    // access the map using a range-based for loop
+    cout << "Villagers details:" << endl;
+    for (auto it : villagerStats) {
+        cout << it.first << " [";
+        for (int i = 0; i < 3; i ++)
+            cout << get<i>(t->second) << ", ";
+        cout << "]";
+        cout << endl;
+    }
 }
