@@ -61,17 +61,7 @@ int main() {
     // delete an element
     villagerColors.erase("Raymond");
 
-    // search for an element using .find() to avoid errors
-    string searchKey = "Audie";
-    auto it = villagerColors.find(searchKey);
-    if (it != villagerColors.end()) {  // the iterator points to beyond the end of the map
-                                       // if searchKey is not found
-        cout << "\nFound " << searchKey << "'s favorite colors: ";
-        for (auto color : it->second)  // range loop to traverse the value/vector
-            cout << color << " ";
-        cout << endl;
-    } else
-        cout << endl << searchKey << " not found." << endl;
+
 
     // report size, clear, report size again to confirm map operations
     cout << "\nSize before clear: " << villagerColors.size() << endl;
@@ -103,11 +93,26 @@ void addVillager(map<string, tuple<int, string, string>>& villagerStats)
     cout << "Catchphrase: ";
     getline(cin, catchphrase);
 
-    tuple<int, string, string> temp(frlevel, );
+    tuple<int, string, string> temp(frlevel, species, catchphrase);
 
+    villagerStats[name] = temp;
 }
 
 void increaseFrlevel(map<string, tuple<int, string, string>>& villagerStats)
 {
+    string name;
+    cout << "Which villager would you like to increase friendship with: ";
+    cin >> name;
 
+    // search for an element using .find() to avoid errors
+    string searchKey = name;
+    auto it = villagerColors.find(searchKey);
+    if (it != villagerColors.end()) {  // the iterator points to beyond the end of the map
+                                       // if searchKey is not found
+        cout << "\nFound " << searchKey << "'s favorite colors: ";
+        for (auto color : it->second)  // range loop to traverse the value/vector
+            cout << color << " ";
+        cout << endl;
+    } else
+        cout << endl << searchKey << " not found." << endl;
 }
