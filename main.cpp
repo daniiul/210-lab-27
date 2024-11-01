@@ -28,6 +28,8 @@ int main() {
             addVillager(villagerStats);
         else if (value == 2)
             increaseFrlevel(villagerStats);
+        else if (value == 3)
+            decreaseFrlevel(villagerStats);
 
     }
 
@@ -106,13 +108,44 @@ void increaseFrlevel(map<string, tuple<int, string, string>>& villagerStats)
 
     // search for an element using .find() to avoid errors
     string searchKey = name;
-    auto it = villagerColors.find(searchKey);
-    if (it != villagerColors.end()) {  // the iterator points to beyond the end of the map
+    auto it = villagerStats.find(searchKey);
+    if (it != villagerStats.end()) {  // the iterator points to beyond the end of the map
                                        // if searchKey is not found
-        cout << "\nFound " << searchKey << "'s favorite colors: ";
-        for (auto color : it->second)  // range loop to traverse the value/vector
-            cout << color << " ";
-        cout << endl;
+        if(get<0>(it->second) != 10)
+        {
+            int frlevel = get<0>(it->second) + 1;
+            string species = get<1>(it->second);
+            string catchphrase = get<2>(it->second);
+
+            tuple<int, string, string> temp(frlevel, species, catchphrase);
+
+            villagerStats[it->first] = temp;
+        }
+    } else
+        cout << endl << searchKey << " not found." << endl;
+}
+
+void decreaseFrlevel(map<string, tuple<int, string, string>>& villagerStats)
+{
+    string name;
+    cout << "Which villager would you like to decrease friendship with: ";
+    cin >> name;
+
+    // search for an element using .find() to avoid errors
+    string searchKey = name;
+    auto it = villagerStats.find(searchKey);
+    if (it != villagerStats.end()) {  // the iterator points to beyond the end of the map
+                                       // if searchKey is not found
+        if(get<0>(it->second) != 0)
+        {
+            int frlevel = get<0>(it->second) - 1;
+            string species = get<1>(it->second);
+            string catchphrase = get<2>(it->second);
+
+            tuple<int, string, string> temp(frlevel, species, catchphrase);
+
+            villagerStats[it->first] = temp;
+        }
     } else
         cout << endl << searchKey << " not found." << endl;
 }
