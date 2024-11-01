@@ -5,7 +5,10 @@
 using namespace std;
 
 void addVillager(map<string, tuple<int, string, string>>&);
+void deleteVillager(map<string, tuple<int, string, string>>&);
 void increaseFrlevel(map<string, tuple<int, string, string>>&);
+void decreaseFrlevel(map<string, tuple<int, string, string>>&);
+void searchVillager(map<string, tuple<int, string, string>>&);
 
 int main() {
     // declarations
@@ -27,9 +30,13 @@ int main() {
         if (value == 1)
             addVillager(villagerStats);
         else if (value == 2)
-            increaseFrlevel(villagerStats);
+            deleteVillager(villagerStats);
         else if (value == 3)
+            increaseFrlevel(villagerStats);
+        else if (value == 4)
             decreaseFrlevel(villagerStats);
+        else if (value == 5)
+            searchVillager(villagerStats);
 
     }
 
@@ -60,8 +67,6 @@ int main() {
         cout << endl;
     }
 
-    // delete an element
-    villagerColors.erase("Raymond");
 
 
 
@@ -99,6 +104,23 @@ void addVillager(map<string, tuple<int, string, string>>& villagerStats)
 
     villagerStats[name] = temp;
 }
+
+void deleteVillager(map<string, tuple<int, string, string>>& villagerStats)
+{
+    string name;
+    cout << "Which villager would you like to remove: ";
+    cin >> name;
+
+    string searchKey = name;
+    auto it = villagerStats.find(searchKey);
+    if (it != villagerStats.end())
+    {
+        villagerColors.erase(searchKey);
+    }
+    else
+        cout << endl << searchKey << " not found." << endl;
+}
+
 
 void increaseFrlevel(map<string, tuple<int, string, string>>& villagerStats)
 {
@@ -147,5 +169,22 @@ void decreaseFrlevel(map<string, tuple<int, string, string>>& villagerStats)
             villagerStats[it->first] = temp;
         }
     } else
+        cout << endl << searchKey << " not found." << endl;
+}
+
+void searchVillager(map<string, tuple<int, string, string>>& villagerStats)
+{
+    string name;
+    cout << "Which villager would you like to find: ";
+    cin >> name;
+
+    // search for an element using .find() to avoid errors
+    string searchKey = name;
+    auto it = villagerStats.find(searchKey);
+    if (it != villagerStats.end()) {  // the iterator points to beyond the end of the map
+                                       // if searchKey is not found
+        cout << searchKey << " was found." << endl;
+    }
+    else
         cout << endl << searchKey << " not found." << endl;
 }
