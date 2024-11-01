@@ -1,3 +1,5 @@
+// COMSC-210 | 210-lab-27 | Daniil Malakhov
+// IDE used: Codeblocks
 #include <iostream>
 #include <map>
 #include <vector>
@@ -15,8 +17,10 @@ int main() {
     // declarations
     map<string, tuple<int, string, string>> villagerStats;
 
+    // user choice
     int value = 0;
 
+    // menu system
     while(value != 6)
     {
         cout << "1. Add Villager" << endl;
@@ -46,6 +50,9 @@ int main() {
     return 0;
 }
 
+// adds villagers to the map, prompts user for details about villager creates a key value pair and inserts it into map
+// arguments: address to the villagerStats map
+// returns: none
 void addVillager(map<string, tuple<int, string, string>>& villagerStats)
 {
     string name;
@@ -75,6 +82,9 @@ void addVillager(map<string, tuple<int, string, string>>& villagerStats)
     villagerStats[name] = temp;
 }
 
+// deletes a villager from map by asking user which user to delete, if user not found returns error statement
+// arguments: address to the villagerStats map
+// returns: none
 void deleteVillager(map<string, tuple<int, string, string>>& villagerStats)
 {
     string name;
@@ -91,7 +101,9 @@ void deleteVillager(map<string, tuple<int, string, string>>& villagerStats)
         cout << endl << searchKey << " not found." << endl;
 }
 
-
+// increases the friendship of a specific villager in the map
+// arguments: address to the villagerStats map
+// returns: none
 void increaseFrlevel(map<string, tuple<int, string, string>>& villagerStats)
 {
     string name;
@@ -117,6 +129,9 @@ void increaseFrlevel(map<string, tuple<int, string, string>>& villagerStats)
         cout << endl << searchKey << " not found." << endl;
 }
 
+// decreases the friendship of a specific villager in the map
+// arguments: address to the villagerStats map
+// returns: none
 void decreaseFrlevel(map<string, tuple<int, string, string>>& villagerStats)
 {
     string name;
@@ -142,6 +157,9 @@ void decreaseFrlevel(map<string, tuple<int, string, string>>& villagerStats)
         cout << endl << searchKey << " not found." << endl;
 }
 
+// finds the user inputted villager in map and tells user if villager exists or not
+// arguments: address to the villagerStats map
+// returns: none
 void searchVillager(map<string, tuple<int, string, string>>& villagerStats)
 {
     string name;
@@ -159,6 +177,9 @@ void searchVillager(map<string, tuple<int, string, string>>& villagerStats)
         cout << endl << searchKey << " not found." << endl;
 }
 
+// prints all the villagers in the map
+// arguments: address to the villagerStats map
+// returns: none
 void print(map<string, tuple<int, string, string>>& villagerStats)
 {
     cout << endl;
